@@ -24,6 +24,8 @@ class StackOverflowSuite extends FunSuite with BeforeAndAfterAll {
     override def kmeansKernels = 45
     override def kmeansEta: Double = 20.0D
     override def kmeansMaxIterations = 120
+
+
   }
 
   test("testObject can be instantiated") {
@@ -33,6 +35,8 @@ class StackOverflowSuite extends FunSuite with BeforeAndAfterAll {
     } catch {
       case _: Throwable => false
     }
+
+    testObject.
     assert(instantiatable, "Can't instantiate a StackOverflow object")
   }
 
