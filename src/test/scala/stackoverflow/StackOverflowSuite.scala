@@ -1,6 +1,6 @@
 package stackoverflow
 
-import org.scalatest.{BeforeAndAfterAll, FunSuite}
+import org.scalatest.{FunSuite, BeforeAndAfterAll}
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 import org.apache.spark.SparkConf
@@ -8,8 +8,6 @@ import org.apache.spark.SparkContext
 import org.apache.spark.SparkContext._
 import org.apache.spark.rdd.RDD
 import java.io.File
-
-import stackoverflow.StackOverflow._
 
 @RunWith(classOf[JUnitRunner])
 class StackOverflowSuite extends FunSuite with BeforeAndAfterAll {
@@ -24,8 +22,6 @@ class StackOverflowSuite extends FunSuite with BeforeAndAfterAll {
     override def kmeansKernels = 45
     override def kmeansEta: Double = 20.0D
     override def kmeansMaxIterations = 120
-
-
   }
 
   test("testObject can be instantiated") {
@@ -35,9 +31,8 @@ class StackOverflowSuite extends FunSuite with BeforeAndAfterAll {
     } catch {
       case _: Throwable => false
     }
-
-    testObject.
     assert(instantiatable, "Can't instantiate a StackOverflow object")
   }
+
 
 }
