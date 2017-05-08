@@ -73,7 +73,7 @@ class StackOverflow extends Serializable {
               parentId =       if (arr(3) == "") None else Some(arr(3).toInt),
               score =          arr(4).toInt,
               tags =           if (arr.length >= 6) Some(arr(5).intern()) else None)
-    })
+  })
 
 
   /** Group the questions and answers together */
@@ -108,6 +108,7 @@ class StackOverflow extends Serializable {
       
       while (i < questions.length) {
         question = questions(i)
+        i += 1
       }
 
       (question, highest)
