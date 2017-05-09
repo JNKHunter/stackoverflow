@@ -133,7 +133,10 @@ class StackOverflow extends Serializable {
       }
     }
 
-    ???
+    scored.map(score => {
+      val indexOfLang = firstLangInTag(score._1.tags, langs)
+      (indexOfLang.get * langSpread, score._2)
+    })
   }
 
 
