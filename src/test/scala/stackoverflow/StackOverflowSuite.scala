@@ -1,6 +1,6 @@
 package stackoverflow
 
-import org.scalatest.{FunSuite, BeforeAndAfterAll}
+import org.scalatest.{BeforeAndAfterAll, FunSuite, Suite}
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 import org.apache.spark.SparkConf
@@ -8,6 +8,29 @@ import org.apache.spark.SparkContext
 import org.apache.spark.SparkContext._
 import org.apache.spark.rdd.RDD
 import java.io.File
+
+
+
+trait SharedSparkContext extends BeforeAndAfterAll { self:Suite =>
+
+  @transient private var _sc: SparkContext = _
+
+  def sc: SparkContext = _sc
+
+  var conf = new SparkConf(false)
+
+  override def beforeAll(): Unit = {
+    _sc = new SparkContext("local[2]", "test", conf)
+    super.beforeAll()
+  }
+
+  override def afterAll(): Unit = {
+    /*LocalSparkContext.stop(_sc)
+    _sc = null*/
+    super.afterAll()
+  }
+}
+
 
 @RunWith(classOf[JUnitRunner])
 class StackOverflowSuite extends FunSuite with BeforeAndAfterAll {
