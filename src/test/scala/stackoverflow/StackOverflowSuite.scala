@@ -80,6 +80,8 @@ class StackOverflowSuite extends FunSuite with SharedSparkContext {
 
     val vectors = vectorPostings(scored)
     assert(vectors.count() == 2121822)
+
+    val means   = kmeans(sampleVectors(vectors), vectors, debug = true)
   }
 
 
