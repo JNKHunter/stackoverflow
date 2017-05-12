@@ -94,7 +94,7 @@ class StackOverflow extends Serializable {
       .mapValues(answerHighScore)
   }
 
-
+  
   /** Compute the vectors for the kmeans */
   def vectorPostings(scored: RDD[(Posting, Int)]): RDD[(Int, Int)] = {
     /** Return optional index of first language that occurs in `tags`. */
